@@ -234,7 +234,9 @@ def calculate_certificate_fingerprint(cert):
         #    ('+', '/') that would otherwise be misinterpreted in URL parameters.
         base64_fingerprint = base64.b64encode(fingerprint).decode("utf-8")
         unpadded_base64_fingerprint = base64_fingerprint.rstrip("=")
-        return quote(unpadded_base64_fingerprint)
+        final_cert_fingerprint = quote(unpadded_base64_fingerprint)
+        print (f"[Test Agentic print certificate fingerprint] {final_cert_fingerprint}")
+        return final_cert_fingerprint
     except ImportError as e:
         raise ImportError(CRYPTOGRAPHY_NOT_FOUND_ERROR) from e
 
